@@ -20,7 +20,15 @@ export default function Home() {
           全 5 波を守り抜けば勝利
         </div>
         <div style={{ marginTop: 6, opacity: 0.8 }}>
-          MIT License © 2026 坂田哲朗 ・{" "}
+          <a
+            href="https://github.com/twill3c/yagura-defense/blob/main/LICENSE"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "inherit" }}
+          >
+            MIT License
+          </a>{" "}
+          © 2026 坂田哲朗 ・{" "}
           <a
             href="https://github.com/twill3c/yagura-defense"
             target="_blank"

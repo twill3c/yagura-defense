@@ -53,3 +53,5 @@
 | T-104 | F-10 | runBaseline | 推奨セル重複なし・決定性・tick 予算内に終局 |
 | T-070 | F-12 | diffEvents | shot/kill/leak/waveStart/waveClear/won/lost を状態差分から抽出 |
 | T-071 | F-08 | highscore | 高得点のみ更新・マップ別・storage 無しで安全に無効 |
+| T-110 | F-11 | generateMap 同一シード | 深い等値・異シードは経路が変わる |
+| T-111 | B-06 | シード 1〜20 全数 | validateMap 合格・左端 → 右端・5 ウェーブ以上 |

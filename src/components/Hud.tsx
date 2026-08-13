@@ -6,11 +6,13 @@ export function Hud({
   soundOn,
   onToggleSound,
   onStartWave,
+  onSelectMap,
 }: {
   game: GameState;
   soundOn: boolean;
   onToggleSound: () => void;
   onStartWave: () => void;
+  onSelectMap: () => void;
 }) {
   const totalWaves = game.map.waves.length;
   const waveLabel =
@@ -38,10 +40,25 @@ export function Hud({
       <span>❤️ {game.lives}</span>
       <span style={{ color: "var(--text-dim)" }}>{waveLabel}</span>
       <button
+        onClick={onSelectMap}
+        aria-label="マップ選択へ戻る"
+        style={{
+          marginLeft: "auto",
+          minWidth: 44,
+          minHeight: 44,
+          fontSize: 18,
+          borderRadius: 8,
+          border: "1px solid var(--line)",
+          background: "var(--surface)",
+          cursor: "pointer",
+        }}
+      >
+        🗺
+      </button>
+      <button
         onClick={onToggleSound}
         aria-label={soundOn ? "効果音を切る" : "効果音を鳴らす"}
         style={{
-          marginLeft: "auto",
           minWidth: 44,
           minHeight: 44,
           fontSize: 18,

@@ -14,10 +14,12 @@ import { UI_NONE, uiReduce, type UiAction, type UiSelection } from "@/lib/uiStat
 import { BuildPanel } from "./BuildPanel";
 import { GameBoard } from "./GameBoard";
 import { Hud } from "./Hud";
+import { MapSelect } from "./MapSelect";
 
 const SEED = 1;
 
 export function Game() {
+  const [screen, setScreen] = useState<"select" | "play">("select");
   const [game, setGame] = useState<GameState>(() => createGame(MAP_01, SEED));
   const [sel, setSel] = useState<UiSelection>(UI_NONE);
   const [soundOn, setSoundOn] = useState(false); // F-12: デフォルト OFF
@@ -100,13 +102,29 @@ export function Game() {
   }, []);
 
   const restart = useCallback(() => {
-    setGame(createGame(MAP_01, SEED));
+    setGame((g) => createGame(g.map, SEED));
     setSel(UI_NONE);
     setHighInfo(null);
     accRef.current = 0;
   }, []);
 
+  const pickMap = useCallback((map: GameState["map"]) => {
+    setGame(createGame(map, SEED));
+    setSel(UI_NONE);
+    setHighInfo(null);
+    accRef.current = 0;
+    setScreen("play");
+  }, []);
+
+  const backToSelect = useCallback(() => {
+    setScreen("select");
+  }, []);
+
   const ended = game.status === "won" || game.status === "lost";
+
+  if (screen === "select") {
+    return <MapSelect onPick={pickMap} />;
+  }
 
   return (
     <div
@@ -124,6 +142,7 @@ export function Game() {
         soundOn={soundOn}
         onToggleSound={toggleSound}
         onStartWave={() => exec({ type: "startWave" })}
+        onSelectMap={backToSelect}
       />
       <div style={{ position: "relative" }}>
         <GameBoard game={game} sel={sel} onUi={dispatchUi} />
@@ -177,21 +196,38 @@ export function Game() {
                     : null}
               </div>
             )}
-            <button
-              onClick={restart}
-              style={{
-                minWidth: 160,
-                minHeight: 44,
-                fontSize: 16,
-                borderRadius: 8,
-                border: "1px solid var(--line)",
-                background: "var(--accent)",
-                color: "#fff",
-                cursor: "pointer",
-              }}
-            >
-              もう一度
-            </button>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+              <button
+                onClick={restart}
+                style={{
+                  minWidth: 140,
+                  minHeight: 44,
+                  fontSize: 16,
+                  borderRadius: 8,
+                  border: "1px solid var(--line)",
+                  background: "var(--accent)",
+                  color: "#fff",
+                  cursor: "pointer",
+                }}
+              >
+                もう一度
+              </button>
+              <button
+                onClick={backToSelect}
+                style={{
+                  minWidth: 140,
+                  minHeight: 44,
+                  fontSize: 16,
+                  borderRadius: 8,
+                  border: "1px solid var(--line)",
+                  background: "var(--surface)",
+                  color: "var(--text)",
+                  cursor: "pointer",
+                }}
+              >
+                マップ選択へ
+              </button>
+            </div>
           </div>
         )}
       </div>

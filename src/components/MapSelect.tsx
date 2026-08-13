@@ -38,7 +38,23 @@ export function MapSelect({ onPick }: { onPick: (map: GameMap) => void }) {
         gap: 12,
       }}
     >
-      <h1 style={{ margin: 0, fontSize: 22 }}>やぐらディフェンス</h1>
+      <h1 style={{ margin: 0, fontSize: 22 }}>
+        やぐらディフェンス{" "}
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 400,
+            color: "var(--text-dim)",
+            border: "1px solid var(--line)",
+            borderRadius: 999,
+            padding: "2px 8px",
+            verticalAlign: "middle",
+            whiteSpace: "nowrap",
+          }}
+        >
+          📱 スマホ対応(タッチ操作)
+        </span>
+      </h1>
       <p style={{ margin: 0, color: "var(--text-dim)" }}>
         出陣する街道を選んでください。矢倉を建てて本丸を守り抜こう。
       </p>

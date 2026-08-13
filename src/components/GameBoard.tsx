@@ -139,9 +139,17 @@ export function GameBoard({
         const pos = enemyPosition(map, e);
         const r = ENEMY_R[e.type];
         const hpRatio = Math.max(0, e.hp / ENEMIES[e.type].hp);
+        const slowed = e.slowUntil !== undefined && game.tick < e.slowUntil;
         return (
           <g key={e.id} pointerEvents="none">
-            <circle cx={pos.x + 0.5} cy={pos.y + 0.5} r={r} fill={ENEMY_COLOR[e.type]} />
+            <circle
+              cx={pos.x + 0.5}
+              cy={pos.y + 0.5}
+              r={r}
+              fill={ENEMY_COLOR[e.type]}
+              stroke={slowed ? "#7ec8e3" : "none"}
+              strokeWidth={slowed ? 0.07 : 0}
+            />
             <rect x={pos.x + 0.15} y={pos.y - 0.02} width={0.7} height={0.09} fill="#141b26" />
             <rect
               x={pos.x + 0.15}

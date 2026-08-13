@@ -3,9 +3,13 @@ import type { GameState } from "@/core/types";
 
 export function Hud({
   game,
+  soundOn,
+  onToggleSound,
   onStartWave,
 }: {
   game: GameState;
+  soundOn: boolean;
+  onToggleSound: () => void;
   onStartWave: () => void;
 }) {
   const totalWaves = game.map.waves.length;
@@ -34,10 +38,25 @@ export function Hud({
       <span>❤️ {game.lives}</span>
       <span style={{ color: "var(--text-dim)" }}>{waveLabel}</span>
       <button
+        onClick={onToggleSound}
+        aria-label={soundOn ? "効果音を切る" : "効果音を鳴らす"}
+        style={{
+          marginLeft: "auto",
+          minWidth: 44,
+          minHeight: 44,
+          fontSize: 18,
+          borderRadius: 8,
+          border: "1px solid var(--line)",
+          background: "var(--surface)",
+          cursor: "pointer",
+        }}
+      >
+        {soundOn ? "🔊" : "🔇"}
+      </button>
+      <button
         onClick={onStartWave}
         disabled={game.status !== "building"}
         style={{
-          marginLeft: "auto",
           minWidth: 96,
           minHeight: 44,
           fontSize: 15,

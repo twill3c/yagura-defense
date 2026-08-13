@@ -51,3 +51,5 @@
 | T-102 | B-03 | 初期資金 | 弓矢倉 2 基以上建設可能 |
 | T-103 | B-05 | 全タワー × 全敵 | 1 発ダメージ ≥ 1 |
 | T-104 | F-10 | runBaseline | 推奨セル重複なし・決定性・tick 予算内に終局 |
+| T-070 | F-12 | diffEvents | shot/kill/leak/waveStart/waveClear/won/lost を状態差分から抽出 |
+| T-071 | F-08 | highscore | 高得点のみ更新・マップ別・storage 無しで安全に無効 |

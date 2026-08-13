@@ -8,3 +8,5 @@
 {"v": "1.2", "ts": "2026-08-13T14:49:36+09:00", "project": "yagura-defense", "loop_id": "loop_006", "event": "test_run", "data": {"command": "npm run verify", "passed": 82, "failed": 0}}
 {"v": "1.2", "ts": "2026-08-13T14:49:36+09:00", "project": "yagura-defense", "loop_id": "loop_006", "event": "stage_end", "data": {"stage": 5, "stage_name": "検証", "result": "pass"}}
 {"v": "1.2", "ts": "2026-08-13T14:49:37+09:00", "project": "yagura-defense", "loop_id": "loop_006", "event": "stage_end", "data": {"stage": 6, "stage_name": "文書同期", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T14:49:59+09:00", "project": "yagura-defense", "loop_id": "loop_006", "event": "commit", "data": {"sha": "5040eb0", "kind": "feat"}}
+{"v": "1.2", "ts": "2026-08-13T14:50:00+09:00", "project": "yagura-defense", "loop_id": "loop_006", "event": "loop_end", "data": {"outcome": "success", "failure_count": 0, "summary": "diffEvents+WebAudio 効果音(デフォルトOFF)+バナー演出+ハイスコア。テスト 82 件 green・verify PASS"}}

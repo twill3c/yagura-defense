@@ -11,3 +11,5 @@
 {"v": "1.2", "ts": "2026-08-13T14:41:47+09:00", "project": "yagura-defense", "loop_id": "loop_005", "event": "test_run", "data": {"command": "npm run verify", "passed": 71, "failed": 0}}
 {"v": "1.2", "ts": "2026-08-13T14:41:47+09:00", "project": "yagura-defense", "loop_id": "loop_005", "event": "stage_end", "data": {"stage": 5, "stage_name": "検証", "result": "pass"}}
 {"v": "1.2", "ts": "2026-08-13T14:41:47+09:00", "project": "yagura-defense", "loop_id": "loop_005", "event": "stage_end", "data": {"stage": 6, "stage_name": "文書同期", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T14:43:14+09:00", "project": "yagura-defense", "loop_id": "loop_005", "event": "commit", "data": {"sha": "91834d5", "kind": "feat"}}
+{"v": "1.2", "ts": "2026-08-13T14:43:14+09:00", "project": "yagura-defense", "loop_id": "loop_005", "event": "loop_end", "data": {"outcome": "success", "failure_count": 1, "summary": "バランスゲート B-01/02/03/05 テスト化・基準戦略はゲートを初回通過。TOOL-MISUSE 累計2回で HC-002 起票、AGENTS.md 改訂。テスト 71 件 green・verify PASS"}}

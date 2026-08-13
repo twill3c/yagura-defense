@@ -22,6 +22,15 @@ export default function Home() {
         <div style={{ marginTop: 6, opacity: 0.8 }}>
           MIT License © 2026 坂田哲朗 ・{" "}
           <a
+            href="https://github.com/twill3c/yagura-defense"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "inherit" }}
+          >
+            GitHub
+          </a>{" "}
+          ・{" "}
+          <a
             href="https://claude.ai/code/artifact/87aa6fde-cf7e-4fe8-a5c6-cfebbbbea609"
             target="_blank"
             rel="noreferrer"

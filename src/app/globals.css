@@ -1,0 +1,33 @@
+/* 基調: 藍鉄(あいてつ)の夜空に朱の矢倉 — 和風ダーク単一テーマ */
+:root {
+  --bg: #141b26;
+  --surface: #1e2936;
+  --line: #35455a;
+  --text: #e8e4d8;
+  --text-dim: #9aa5b1;
+  --accent: #d9553f; /* 朱 */
+  --accent-soft: #e8a87c;
+  --path: #4a3f33;
+  --grass: #24382e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP",
+    sans-serif;
+  /* スクロール・ピンチとゲーム操作の干渉を防ぐ(F-09) */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}

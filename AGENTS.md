@@ -31,10 +31,14 @@ core(決定論的シミュレーション / バランス定義 / マップ)+ Nex
 | 5 検証 | `npm run verify`(build 込み)を green にする。ゲートコマンドはパイプを通さず素で実行し exit code で判定する |
 | 7 完了 | `looplog.py validate` 合格 + `summary` を完了報告に含める |
 
-looplog 記録の規範(HC-001):
+looplog 記録の規範(HC-001 / HC-002):
 
 - 新しいイベント種別を初めて使う前に `harness/looplog.py` の EVENT_SPECS(必須フィールドと型)を確認する。推測で引数を組み立てない。
 - `test_run` の passed / failed は**直前のテスト出力の数値をそのまま転記**する。記憶で書かない。
+- `test_run` の記録はテスト実行と**別コマンド**で行う。実行と記録を同一シェルバッチに
+  混ぜると、出力確認前に数値を書くことになる(HC-002)。
+- enum フィールド(failure.resolution / severity / commit.kind)の許容値は
+  `schema/taxonomy.json` と looplog.py の ENUMS が正。初回使用前に確認する(HC-002)。
 
 ## 3. 品質ゲート(完了条件)
 

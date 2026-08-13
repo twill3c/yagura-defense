@@ -8,3 +8,7 @@
 {"v": "1.2", "ts": "2026-08-13T14:05:43+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "test_run", "data": {"command": "npm run verify", "passed": 36, "failed": 0}}
 {"v": "1.2", "ts": "2026-08-13T14:05:44+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "stage_end", "data": {"stage": 5, "stage_name": "検証", "result": "pass"}}
 {"v": "1.2", "ts": "2026-08-13T14:05:44+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "stage_end", "data": {"stage": 6, "stage_name": "文書同期", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T14:06:33+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "commit", "data": {"sha": "6dca534", "kind": "chore"}}
+{"v": "1.2", "ts": "2026-08-13T14:06:33+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "commit", "data": {"sha": "814539e", "kind": "docs"}}
+{"v": "1.2", "ts": "2026-08-13T14:06:34+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "commit", "data": {"sha": "ffef455", "kind": "feat"}}
+{"v": "1.2", "ts": "2026-08-13T14:06:34+09:00", "project": "yagura-defense", "loop_id": "loop_001", "event": "loop_end", "data": {"outcome": "success", "failure_count": 0, "summary": "環境構築+ヘッドレスコアシム完成。PRNG/マップ検証/決定論的tickエンジン(湧き・移動・リーク・射撃・経済・勝敗)。テスト36件 green、verify(typecheck/lint/coverage/build)PASS"}}

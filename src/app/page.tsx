@@ -44,7 +44,7 @@ export default function Home() {
             rel="noreferrer"
             style={{ color: "inherit" }}
           >
-            遊び方ガイド
+            やぐら指南書
           </a>{" "}
           ・{" "}
           <a
@@ -53,7 +53,7 @@ export default function Home() {
             rel="noreferrer"
             style={{ color: "inherit" }}
           >
-            アーキテクチャ図
+            やぐら設計図
           </a>{" "}
           ・{" "}
           <a

@@ -1,0 +1,10 @@
+{"v": "1.2", "ts": "2026-08-13T15:27:07+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "loop_start", "data": {"goal": "meikyu-rogue と同構成のフッタ(操作説明・MIT License・遊び方ガイド/アーキテクチャ図リンク)を追加し再デプロイ", "spec_refs": ["F-09"], "scaffold_version": "1.8.0", "agent": "claude-code"}}
+{"v": "1.2", "ts": "2026-08-13T15:27:07+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 1, "stage_name": "計画", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T15:27:07+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 2, "stage_name": "文脈読込", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T15:27:08+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 3, "stage_name": "テスト先行", "result": "skip"}}
+{"v": "1.2", "ts": "2026-08-13T15:28:32+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "test_run", "data": {"command": "npm run verify", "passed": 85, "failed": 0}}
+{"v": "1.2", "ts": "2026-08-13T15:28:33+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 4, "stage_name": "実装", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T15:28:33+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 5, "stage_name": "検証", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T15:28:33+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "stage_end", "data": {"stage": 6, "stage_name": "文書同期", "result": "skip"}}
+{"v": "1.2", "ts": "2026-08-13T15:29:33+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "commit", "data": {"sha": "58a46cc", "kind": "feat"}}
+{"v": "1.2", "ts": "2026-08-13T15:29:34+09:00", "project": "yagura-defense", "loop_id": "loop_008", "event": "loop_end", "data": {"outcome": "success", "failure_count": 0, "summary": "meikyu-rogue 同構成のフッタ(操作説明・MIT License・ガイド/設計図リンク)を追加。verify PASS・本番反映確認(HTTP 200 でフッタ検出)"}}

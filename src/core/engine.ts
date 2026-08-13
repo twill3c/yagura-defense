@@ -151,12 +151,15 @@ export function step(state: GameState): GameState {
     }
   }
 
-  // (3) 敵移動+リーク判定
+  // (3) 敵移動+リーク判定(スロー中は speed × slowFactor・F-04)
   const lastIndex = state.map.path.length - 1;
+  const slowFactor = TOWERS.fuda.slowFactor ?? 1;
   const moved: EnemyState[] = [];
   for (const e of enemies) {
     const spec = ENEMIES[e.type];
-    const progress = e.progress + spec.speed * (TICK_MS / 1000);
+    const slowed = e.slowUntil !== undefined && tick < e.slowUntil;
+    const progress =
+      e.progress + spec.speed * (slowed ? slowFactor : 1) * (TICK_MS / 1000);
     if (progress >= lastIndex) {
       lives -= spec.leakDamage;
     } else {
@@ -191,8 +194,24 @@ export function step(state: GameState): GameState {
         }
       }
       if (target !== null) {
-        const dmg = Math.max(1, spec.dmg - ENEMIES[target.type].def);
-        target.hp -= dmg; // enemies は下で撃破処理するローカル配列(moved)の要素
+        // enemies は下で撃破処理するローカル配列(moved)の要素を直接更新する
+        if (spec.splashRadius !== undefined) {
+          // 大筒: 着弾点(ターゲット位置)の splashRadius 内の敵全員に命中
+          const at = enemyPosition(state.map, target);
+          for (const e of enemies) {
+            if (e.hp <= 0) continue;
+            const pos = enemyPosition(state.map, e);
+            if (Math.hypot(pos.x - at.x, pos.y - at.y) <= spec.splashRadius) {
+              e.hp -= Math.max(1, spec.dmg - ENEMIES[e.type].def);
+            }
+          }
+        } else {
+          target.hp -= Math.max(1, spec.dmg - ENEMIES[target.type].def);
+        }
+        if (spec.slowFactor !== undefined) {
+          // 札: スロー付与(再被弾で持続を更新)
+          target.slowUntil = tick + (spec.slowTicks ?? 0);
+        }
         newTowers.push({ ...t, readyAtTick: tick + spec.cooldownTicks });
       } else {
         newTowers.push(t);

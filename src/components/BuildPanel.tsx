@@ -5,8 +5,13 @@ import { TOWERS } from "@/core/balance";
 import type { Command, GameState, TowerTypeId } from "@/core/types";
 import type { UiAction, UiSelection } from "@/lib/uiState";
 
-// 現行ループで効果が完全実装済みのタワーのみ販売する(loop_003 で全種解禁)
-const AVAILABLE: TowerTypeId[] = ["yumi"];
+const AVAILABLE: TowerTypeId[] = ["yumi", "ozutsu", "fuda"];
+
+const TOWER_NOTE: Record<TowerTypeId, string> = {
+  yumi: "単体・速射",
+  ozutsu: "範囲攻撃・低速",
+  fuda: "鈍足付与",
+};
 
 export function BuildPanel({
   game,
@@ -60,6 +65,8 @@ export function BuildPanel({
               }}
             >
               {spec.name} 💰{spec.cost}
+              <br />
+              <small style={{ fontWeight: 400 }}>{TOWER_NOTE[id]}</small>
             </button>
           );
         })}

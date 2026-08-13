@@ -45,6 +45,15 @@ export const MAP_01: GameMap = {
       { enemy: "ashigaru", count: 15, intervalTicks: 6, delayTicks: 10 },
       { enemy: "shinobi", count: 8, intervalTicks: 10, delayTicks: 30 },
     ],
+    [
+      { enemy: "kabuto", count: 6, intervalTicks: 15, delayTicks: 10 },
+      { enemy: "ashigaru", count: 10, intervalTicks: 6, delayTicks: 30 },
+    ],
+    [
+      { enemy: "shinobi", count: 10, intervalTicks: 8, delayTicks: 10 },
+      { enemy: "kabuto", count: 4, intervalTicks: 20, delayTicks: 40 },
+      { enemy: "taisho", count: 1, intervalTicks: 1, delayTicks: 60 },
+    ],
   ],
 };
 

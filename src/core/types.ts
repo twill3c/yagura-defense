@@ -69,6 +69,8 @@ export interface EnemyState {
   hp: number;
   /** path 上の進行度(セル単位の実数)。path.length - 1 以上で本丸到達 */
   progress: number;
+  /** この tick 未満の間スロー(札被弾で付与・再被弾で更新)。未被弾なら absent */
+  slowUntil?: number;
 }
 
 export interface TowerState {

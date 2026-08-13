@@ -3,7 +3,7 @@
 // 積算で進める(N-03: フレームレートが結果に影響しない)。
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TICK_MS } from "@/core/balance";
-import { applyCommand, createGame, step } from "@/core/engine";
+import { applyCommand, createGame, score, step } from "@/core/engine";
 import { MAP_01 } from "@/core/maps";
 import type { Command, GameState } from "@/core/types";
 import { UI_NONE, uiReduce, type UiAction, type UiSelection } from "@/lib/uiState";
@@ -87,6 +87,12 @@ export function Game() {
           >
             <div style={{ fontSize: 28, fontWeight: 700 }}>
               {game.status === "won" ? "本丸を守り抜いた!" : "本丸陥落…"}
+            </div>
+            <div style={{ fontSize: 18 }}>
+              スコア <strong>{score(game)}</strong>
+              <span style={{ color: "var(--text-dim)", fontSize: 14, marginLeft: 8 }}>
+                (撃破 {game.kills} / ❤️ {game.lives} / 💰 {game.money})
+              </span>
             </div>
             <button
               onClick={restart}

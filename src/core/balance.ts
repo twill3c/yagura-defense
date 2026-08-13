@@ -41,6 +41,44 @@ export const TOWERS: Record<TowerTypeId, TowerSpec> = {
   },
 };
 
+/** 強化費用 [Lv2, Lv3](F-07)。invested に累積し、売却払い戻しの基数になる */
+export const UPGRADE_COSTS: Record<TowerTypeId, [number, number]> = {
+  yumi: [80, 160],
+  ozutsu: [200, 400],
+  fuda: [120, 240],
+};
+
+export const MAX_TOWER_LEVEL = 3;
+/** レベル別の威力倍率(四捨五入)と射程ボーナス */
+export const LEVEL_DMG_MULT = [1, 1.5, 2.25] as const;
+export const LEVEL_RANGE_BONUS = [0, 0.25, 0.5] as const;
+
+export interface EffectiveTowerStats {
+  dmg: number;
+  range: number;
+  cooldownTicks: number;
+  splashRadius?: number;
+  slowFactor?: number;
+  slowTicks?: number;
+}
+
+/** レベル込みの実効ステータス(level は 1..MAX_TOWER_LEVEL) */
+export function towerStats(
+  type: TowerTypeId,
+  level: number,
+): EffectiveTowerStats {
+  const spec = TOWERS[type];
+  const i = Math.min(Math.max(level, 1), MAX_TOWER_LEVEL) - 1;
+  return {
+    dmg: Math.round(spec.dmg * LEVEL_DMG_MULT[i]),
+    range: spec.range + LEVEL_RANGE_BONUS[i],
+    cooldownTicks: spec.cooldownTicks,
+    splashRadius: spec.splashRadius,
+    slowFactor: spec.slowFactor,
+    slowTicks: spec.slowTicks,
+  };
+}
+
 export const ENEMIES: Record<EnemyTypeId, EnemySpec> = {
   ashigaru: {
     id: "ashigaru",

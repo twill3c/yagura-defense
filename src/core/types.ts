@@ -112,6 +112,8 @@ export interface GameState {
 
 export type Command =
   | { type: "build"; cell: Cell; tower: TowerTypeId }
+  | { type: "upgrade"; towerId: number }
+  | { type: "sell"; towerId: number }
   | { type: "startWave" };
 
 export interface TimedCommand {

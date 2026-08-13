@@ -4,11 +4,15 @@
 // (2)湧き (3)敵移動+リーク (4)タワー射撃 (5)撃破処理 (6)勝敗判定
 import {
   ENEMIES,
+  MAX_TOWER_LEVEL,
+  SELL_REFUND_RATE,
   START_LIVES,
   START_MONEY,
   TICK_MS,
   TOWERS,
+  UPGRADE_COSTS,
   WAVE_CLEAR_BONUS,
+  towerStats,
 } from "./balance";
 import { isBuildable } from "./maps";
 import { rngInit } from "./prng";
@@ -85,6 +89,40 @@ export function applyCommand(state: GameState, command: Command): CommandResult 
         money: state.money - spec.cost,
         towers: [...state.towers, tower],
         nextTowerId: state.nextTowerId + 1,
+      },
+    };
+  }
+
+  if (command.type === "upgrade") {
+    const tower = state.towers.find((t) => t.id === command.towerId);
+    if (!tower) return reject(state, "タワーが存在しない");
+    if (tower.level >= MAX_TOWER_LEVEL) return reject(state, "最大レベル");
+    const cost = UPGRADE_COSTS[tower.type][tower.level - 1];
+    if (state.money < cost) return reject(state, "資金不足");
+    return {
+      ok: true,
+      state: {
+        ...state,
+        money: state.money - cost,
+        towers: state.towers.map((t) =>
+          t.id === tower.id
+            ? { ...t, level: t.level + 1, invested: t.invested + cost }
+            : t,
+        ),
+      },
+    };
+  }
+
+  if (command.type === "sell") {
+    const tower = state.towers.find((t) => t.id === command.towerId);
+    if (!tower) return reject(state, "タワーが存在しない");
+    const refund = Math.floor(tower.invested * SELL_REFUND_RATE);
+    return {
+      ok: true,
+      state: {
+        ...state,
+        money: state.money + refund,
+        towers: state.towers.filter((t) => t.id !== tower.id),
       },
     };
   }
@@ -177,7 +215,7 @@ export function step(state: GameState): GameState {
         newTowers.push(t);
         continue;
       }
-      const spec = TOWERS[t.type];
+      const spec = towerStats(t.type, t.level);
       let target: EnemyState | null = null;
       for (const e of enemies) {
         if (e.hp <= 0) continue;
@@ -263,6 +301,11 @@ export function step(state: GameState): GameState {
     enemies,
     towers,
   };
+}
+
+/** スコア(F-08): 撃破×10 + 残ライフ×100 + 残資金 */
+export function score(state: GameState): number {
+  return state.kills * 10 + state.lives * 100 + state.money;
 }
 
 /**

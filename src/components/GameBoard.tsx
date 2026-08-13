@@ -1,6 +1,6 @@
 "use client";
 // 盤面 SVG。セル座標系(1 セル = 1 単位)で描き、表示サイズは CSS に任せる。
-import { ENEMIES, TOWERS } from "@/core/balance";
+import { ENEMIES, towerStats } from "@/core/balance";
 import { enemyPosition } from "@/core/engine";
 import { isBuildable } from "@/core/maps";
 import type { GameState } from "@/core/types";
@@ -104,7 +104,7 @@ export function GameBoard({
         <circle
           cx={selectedTower.cell.x + 0.5}
           cy={selectedTower.cell.y + 0.5}
-          r={TOWERS[selectedTower.type].range}
+          r={towerStats(selectedTower.type, selectedTower.level).range}
           fill="rgba(232, 168, 124, 0.12)"
           stroke="var(--accent-soft)"
           strokeWidth={0.04}

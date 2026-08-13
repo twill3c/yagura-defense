@@ -8,3 +8,5 @@
 {"v": "1.2", "ts": "2026-08-13T14:24:34+09:00", "project": "yagura-defense", "loop_id": "loop_003", "event": "test_run", "data": {"command": "npm run verify", "passed": 51, "failed": 0}}
 {"v": "1.2", "ts": "2026-08-13T14:24:34+09:00", "project": "yagura-defense", "loop_id": "loop_003", "event": "stage_end", "data": {"stage": 5, "stage_name": "検証", "result": "pass"}}
 {"v": "1.2", "ts": "2026-08-13T14:24:35+09:00", "project": "yagura-defense", "loop_id": "loop_003", "event": "stage_end", "data": {"stage": 6, "stage_name": "文書同期", "result": "pass"}}
+{"v": "1.2", "ts": "2026-08-13T14:24:35+09:00", "project": "yagura-defense", "loop_id": "loop_003", "event": "commit", "data": {"sha": "d833586", "kind": "feat"}}
+{"v": "1.2", "ts": "2026-08-13T14:24:36+09:00", "project": "yagura-defense", "loop_id": "loop_003", "event": "loop_end", "data": {"outcome": "success", "failure_count": 0, "summary": "全 3 タワー効果+全 4 敵種+5 ウェーブ。テスト 51 件 green・verify PASS"}}
